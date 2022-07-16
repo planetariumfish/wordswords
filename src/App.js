@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { ChakraProvider, Heading, VStack, Container } from "@chakra-ui/react";
+import SearchField from "./SearchField";
+import Results from "./Results";
+import theme from "./theme";
+import { useState } from "react";
 
 function App() {
+  const [definitions, setDefinitions] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <VStack spacing={10} padding={10} w="1200px">
+        <Container centerContent>
+          <Heading as="h1" size="2xl" color="teal.700">
+            Wordswords
+          </Heading>
+        </Container>
+        <Container>
+          <SearchField onSearch={(defs) => setDefinitions(defs)} />
+        </Container>
+        <Container>
+          <Results definitions={definitions} />
+        </Container>
+      </VStack>
+    </ChakraProvider>
   );
 }
 
