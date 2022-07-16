@@ -1,13 +1,8 @@
 import { HStack, Button, Input } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function SearchField(props) {
   const [word, setWord] = useState("");
-  // const [definitions, setDefinitions] = useState([]);
-
-  useEffect(() => {
-    getDefs();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function getDefs() {
     const res = await fetch(

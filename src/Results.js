@@ -4,8 +4,7 @@ import Definition from "./Definition";
 function Results({ definitions }) {
   function parseDefs() {
     // get individual defs out of the json array and pass them on
-    definitions.map((e) => <Definition word={e} />);
-    console.log(definitions);
+    return definitions.map((e, i) => <Definition {...e} key={i} />);
   }
 
   return <Container>{parseDefs()}</Container>;
