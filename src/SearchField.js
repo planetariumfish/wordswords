@@ -12,6 +12,13 @@ function SearchField(props) {
     props.onSearch && props.onSearch(json);
   }
 
+  function handleEnter(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      getDefs();
+    }
+  }
+
   return (
     <HStack>
       <Input
@@ -19,6 +26,7 @@ function SearchField(props) {
         focusBorderColor="teal.500"
         onChange={(e) => setWord(e.target.value)}
         value={word}
+        onKeyDown={(e) => handleEnter(e)}
       />
       <Button
         colorScheme="teal"
